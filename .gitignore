@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qr code</title>
+    <link rel="stylesheet" href="./QRcode.css">
+    <script src="./QRcode.js" defer></script>
+</head>
+<body>
+    <div id="container">
+     <p>Enter your text or url</p >
+     <input type="text" name="" id="qrtext" placeholder="text or url">
+     <div id="img_box">
+        <img src=""  id="Qrimg">
+     </div>
+     <input type="button" value="Generater QRcode" id="button" onclick="generateqrcode()">
+    </div>
+</body>
+</html>
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: rgb(31, 26, 63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#container{
+    height: 300px;
+    width: 300px;
+    background-color: aliceblue;
+    padding: 20px 35px;
+    position: absolute;
+    top: 50px;
+    transform: translate(-50px,-50px);
+    
+     left: 40px;
+      display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 150px; 
+}
+#container p{
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+#container input{
+    height: 30px;
+    width: 100%;
+    border: 2px solid black;
+    outline: none;
+    margin: 10px 0px 20px;
+}
+input::placeholder{
+    padding: 10px;
+    color: black;
+    font-weight: 600;
+    font-size: 20px;
+}
+#container #button{
+    height: 30px;
+    width: 100%;
+    border: 2px solid red; 
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 2px black;
+    margin: 20px 0px;
+    font-weight: 500px;
+    background-color: blue; 
+     color: whitesmoke;
+    cursor: pointer; 
+} 
+ #img_box{
+    width: 200px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 1s;
+}
+#img_box img{
+    width: 100%;
+    padding: 10px;
+}
+#img_box.show-img{
+    max-height: 300px;
+    margin: 10px;
+} 
+
+//javascript//
+
+var imgbox=document.getElementById("img_box")
+var qrimg=document.getElementById("Qrimg")
+var qrtext=document.getElementById("qrtext")
+
+function generateqrcode(){
+  
+  qrimg.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ qrtext.value;
+//   imgbox.classList.add(".show-img")
+}
